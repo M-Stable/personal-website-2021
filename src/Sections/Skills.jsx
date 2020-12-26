@@ -7,24 +7,15 @@ import { useMediaQuery } from "react-responsive";
 import resume from "../images/illustrations/resume.svg";
 import BackgroundBlue from "../CustomComponents/BackgroundBlue";
 
-const StyledImage = styled.img`
-  flex: 1;
-  width: 240px;
-  flex-wrap: wrap;
-  transform: rotate(-5deg);
-  margin-right: 200px;
-  margin-top: 150px;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
+const ResumeImage = styled.img`
+  position: absolute;
+  right: 100px;
+  bottom: 30px;
+  width: 300px;
+  transform: rotate(-15deg);
 `;
 
 const SkillsContainer = styled.div`
-  flex: 4;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -32,6 +23,7 @@ const SkillsContainer = styled.div`
   border-radius: 15px;
   padding: 10px;
   z-index: 2;
+  margin-right: ${(props) => !props.isMobile && "400px"};
 `;
 
 const TableContainer = styled.div`
@@ -114,53 +106,47 @@ const SkillBarContainer = styled.div`
 
 function Skills() {
   const [activeTab, setActiveTab] = useState(2);
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   return (
     <SkillsSection>
-      <Container>
-        {!isTabletOrMobile && <StyledImage src={resume} alt="resume" />}
-        <SkillsContainer>
-          <HeadingContainer>Skills</HeadingContainer>
-          <TableContainer>
-            <Tabs>
-              <Tab onClick={() => setActiveTab(1)} isActive={activeTab === 1}>
-                {isTabletOrMobile ? (
-                  <TabText>Tool</TabText>
-                ) : (
-                  <TabText>Tools</TabText>
-                )}
-              </Tab>
-              <Tab onClick={() => setActiveTab(2)} isActive={activeTab === 2}>
-                {isTabletOrMobile ? (
-                  <TabText>FE</TabText>
-                ) : (
-                  <TabText>Front End</TabText>
-                )}
-              </Tab>
-              <Tab onClick={() => setActiveTab(3)} isActive={activeTab === 3}>
-                {isTabletOrMobile ? (
-                  <TabText>BE</TabText>
-                ) : (
-                  <TabText>Back End</TabText>
-                )}
-              </Tab>
-            </Tabs>
-            <SkillBarContainer isMobile={isTabletOrMobile}>
-              {activeTab === 1 &&
-                tools.map((item) => <SkillBar key={item.title} item={item} />)}
-              {activeTab === 2 &&
-                frontEnd.map((item) => (
-                  <SkillBar key={item.title} item={item} />
-                ))}
-              {activeTab === 3 &&
-                backEnd.map((item) => (
-                  <SkillBar key={item.title} item={item} />
-                ))}
-            </SkillBarContainer>
-          </TableContainer>
-        </SkillsContainer>
-      </Container>
+      <SkillsContainer isMobile={isTabletOrMobile}>
+        <HeadingContainer>Skills</HeadingContainer>
+        <TableContainer>
+          <Tabs>
+            <Tab onClick={() => setActiveTab(1)} isActive={activeTab === 1}>
+              {isTabletOrMobile ? (
+                <TabText>Tool</TabText>
+              ) : (
+                <TabText>Tools</TabText>
+              )}
+            </Tab>
+            <Tab onClick={() => setActiveTab(2)} isActive={activeTab === 2}>
+              {isTabletOrMobile ? (
+                <TabText>FE</TabText>
+              ) : (
+                <TabText>Front End</TabText>
+              )}
+            </Tab>
+            <Tab onClick={() => setActiveTab(3)} isActive={activeTab === 3}>
+              {isTabletOrMobile ? (
+                <TabText>BE</TabText>
+              ) : (
+                <TabText>Back End</TabText>
+              )}
+            </Tab>
+          </Tabs>
+          <SkillBarContainer isMobile={isTabletOrMobile}>
+            {activeTab === 1 &&
+              tools.map((item) => <SkillBar key={item.title} item={item} />)}
+            {activeTab === 2 &&
+              frontEnd.map((item) => <SkillBar key={item.title} item={item} />)}
+            {activeTab === 3 &&
+              backEnd.map((item) => <SkillBar key={item.title} item={item} />)}
+          </SkillBarContainer>
+        </TableContainer>
+      </SkillsContainer>
+      {!isTabletOrMobile && <ResumeImage src={resume} alt="resume" />}
       <BackgroundBlue />
     </SkillsSection>
   );

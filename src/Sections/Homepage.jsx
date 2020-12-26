@@ -9,6 +9,7 @@ import sky from "../images/landing-page/sky.png";
 import mountain from "../images/landing-page/mountain.png";
 import hill1 from "../images/landing-page/hill1.png";
 import hill2 from "../images/landing-page/hill2.png";
+import rocks from "../images/landing-page/rocks.png";
 
 const OrangePage = styled(IntroSection)`
   background-image: url(${backgroundImage});
@@ -72,6 +73,14 @@ const Hill2Image = styled.img`
   z-index: 8;
 `;
 
+const RockImage = styled.img`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2000px;
+  z-index: 20;
+`;
+
 function Homepage(props) {
   const { executeScroll } = props;
   const [offsetY, setOffsetY] = useState(0);
@@ -105,6 +114,10 @@ function Homepage(props) {
         src={hill2}
         alt="hill2"
         style={{ transform: `translateX(${offsetY * 0.2}px)` }}
+      />
+      <RockImage
+        src={rocks}
+        alt="rocks"
       />
       <div
         style={{
