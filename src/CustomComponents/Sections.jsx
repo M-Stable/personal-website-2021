@@ -28,6 +28,7 @@ const SkillsSection = styled.div`
   background-color: #fff8f0;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 const WorkSection = styled.div`
@@ -50,7 +51,7 @@ const ProjectSection = styled.div`
 
 const MusicSection = styled.div`
   min-height: calc(100vh - 80px);
-  min-width: ${props => props.isMobile ? "calc(100vw - 80px)" : "calc(50vw - 80px)"};
+  min-width: ${props => props.isMobile ? "calc(100vw - 100px)" : "calc(50vw - 80px)"};
   padding: 40px;
   background-color: #bb7e5d;
   display: flex;
@@ -60,7 +61,7 @@ const MusicSection = styled.div`
 
 const ContactSection = styled.div`
   min-height: calc(100vh - 80px);
-  min-width: ${props => props.isMobile ? "calc(100vw - 80px)" : "calc(50vw - 100px)"};
+  min-width: ${props => props.isMobile ? "calc(100vw - 100px)" : "calc(50vw - 100px)"};
   padding: 40px;
   background-color: #423e37;
   display: flex;

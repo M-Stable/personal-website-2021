@@ -7,6 +7,7 @@ const LevelContainer = styled.div`
   align-items: center;
   margin: 20px 0 20px 0;
   flex-basis: 45%;
+  min-width: 250px;
 
   &:hover #title {
     width: calc(100% - 20px);
@@ -32,7 +33,6 @@ const Icon = styled.div`
 const FullBar = styled.div`
   background-color: #c4c4c4;
   height: 10px;
-  min-width: 170px;
   width: 100%;
   margin-right: 10px;
   box-shadow: 3px 3px #ebe4d7;

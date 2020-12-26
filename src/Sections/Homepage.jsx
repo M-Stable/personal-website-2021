@@ -5,9 +5,17 @@ import styled from "styled-components";
 import backgroundImage from "../images/background-image.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import sky from "../images/landing-page/sky.png";
+import mountain from "../images/landing-page/mountain.png";
+import hill1 from "../images/landing-page/hill1.png";
+import hill2 from "../images/landing-page/hill2.png";
 
 const OrangePage = styled(IntroSection)`
   background-image: url(${backgroundImage});
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  overflow: hidden;
 `;
 
 const ScrollButton = styled.button`
@@ -23,11 +31,45 @@ const ScrollButton = styled.button`
   outline: none;
   opacity: 0.6;
   transition: 0.3s;
+  z-index: 20;
 
   &:hover {
     opacity: 1;
     cursor: pointer;
   }
+`;
+
+const SkyImage = styled.img`
+  position: absolute;
+  top: 0;
+  width: 2100px;
+  height: 1000px;
+  z-index: 1;
+`;
+
+const MountainImage = styled.img`
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  width: 50%;
+  z-index: 4;
+`;
+
+const Hill1Image = styled.img`
+  position: absolute;
+  bottom: 0;
+  right: -100px;
+  width: 1600px;
+  height: 900px;
+  z-index: 10;
+`;
+
+const Hill2Image = styled.img`
+  position: absolute;
+  bottom: 0;
+  left: -200px;
+  width: 1500px;
+  z-index: 8;
 `;
 
 function Homepage(props) {
@@ -44,11 +86,32 @@ function Homepage(props) {
 
   return (
     <OrangePage>
+      <SkyImage
+        src={sky}
+        alt="sky"
+        style={{ transform: `translateY(-${offsetY * 0.2}px)` }}
+      />
+      <MountainImage
+        src={mountain}
+        alt="mountain"
+        style={{ transform: `translateX(${offsetY * 0.7}px)` }}
+      />
+      <Hill1Image
+        src={hill1}
+        alt="hill1"
+        style={{ transform: `translateX(-${offsetY * 0.1}px)` }}
+      />
+      <Hill2Image
+        src={hill2}
+        alt="hill2"
+        style={{ transform: `translateX(${offsetY * 0.2}px)` }}
+      />
       <div
         style={{
           height: "40%",
           width: "40%",
           transform: `translateY(${offsetY * 0.3}px)`,
+          zIndex: "20",
         }}
       >
         <Francis />

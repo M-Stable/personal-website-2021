@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { frontEnd, backEnd, tools } from "../helpers/skillsData";
 import { useMediaQuery } from "react-responsive";
 import resume from "../images/illustrations/resume.svg";
+import BackgroundBlue from "../CustomComponents/BackgroundBlue";
 
 const StyledImage = styled.img`
   flex: 1;
@@ -28,16 +29,9 @@ const SkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  box-shadow: 0px 0px #ebe4d7;
   border-radius: 15px;
-  transition: 0.5s;
   padding: 10px;
-
-  &:hover {
-    box-shadow: 15px 15px #ebe4d7;
-    transform: translateX(-10px);
-    transform: translateY(-10px);
-  }
+  z-index: 2;
 `;
 
 const TableContainer = styled.div`
@@ -167,6 +161,7 @@ function Skills() {
           </TableContainer>
         </SkillsContainer>
       </Container>
+      <BackgroundBlue />
     </SkillsSection>
   );
 }
