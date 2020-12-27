@@ -52,9 +52,6 @@ const AboutContainer = styled.div`
   min-width: 300px;
   border-left: ${(props) => !props.isMobile && "0.3rem solid #423e37"};
   padding: ${(props) => !props.isMobile && "0 30px 0 30px"};
-  // border-left: 0.3rem solid #423e37;
-  // padding: 0 30px 0 30px;
-  // margin: 0 50px 0 350px;
   margin: ${(props) => !props.isMobile && "0 50px 0 350px"};
   transition: all 1s ease;
   animation: 1s ${fadeIn} ease-out;
@@ -87,6 +84,7 @@ const NextButton = styled.button`
   align-items: center;
   justify-content: space-between;
   padding: 5px;
+  margin-bottom: 8px;
   height: 40px;
   width: auto;
   background: transparent;
