@@ -21,7 +21,7 @@ const frontEnd = [
   },
   {
     title: "JavaScript",
-    percentage: "80%",
+    percentage: "70%",
     image: js,
   },
   {
@@ -39,7 +39,7 @@ const backEnd = [
   },
   {
     title: "C",
-    percentage: "60%",
+    percentage: "50%",
     image: c,
   },
   {

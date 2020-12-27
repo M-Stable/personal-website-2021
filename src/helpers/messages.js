@@ -58,7 +58,7 @@ const workExperience = [
   },
   {
     title: "Fluid Connectors",
-    subHeading: "Fluid Connectors (Dec. 2017 to Feb. 2018)",
+    subHeading: "Inventory Analyst (Dec. 2017 to Feb. 2018)",
     description: [
       "Worked in a team alongside other Inventory Analysts and Mechanical Engineers",
       "Have had first-hand experience using crimping machines and press machines to assemble hydraulic parts",
