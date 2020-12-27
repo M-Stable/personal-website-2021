@@ -252,7 +252,7 @@ function Contact(props) {
 
         <form
           onSubmit={sendEmail}
-          style={{ minHeight: !isTabletOrMobile && "744px" }}
+          style={{ minHeight: !isTabletOrMobile && "714px", marginTop: "30px" }}
         >
           <StyledDiv data-aos="fade-left">
             <StyledInput
