@@ -58,7 +58,7 @@ const backEnd = [
     image: bash,
   },
   {
-    title: "Pyhton",
+    title: "Python",
     percentage: "10%",
     image: python,
   },
