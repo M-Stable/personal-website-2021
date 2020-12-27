@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useMediaQuery } from "react-responsive";
 
 const LevelContainer = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ const LevelContainer = styled.div`
   align-items: center;
   margin: 20px 0 20px 0;
   flex-basis: 45%;
-  min-width: 250px;
+  // min-width: 250px;
 
   &:hover #title {
     width: calc(100% - 20px);
@@ -59,15 +60,18 @@ const Title = styled.p`
 `;
 
 function SkillBar(props) {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 750px)" });
   const { item } = props;
 
   return (
     <LevelContainer>
       <Icon img={item.image} />
       <Title id="title">{item.title}</Title>
-      <FullBar>
-        <PercentageBar percentage={item.percentage} />
-      </FullBar>
+      {!isTabletOrMobile && (
+        <FullBar>
+          <PercentageBar percentage={item.percentage} />
+        </FullBar>
+      )}
       <p style={{ color: "#423E37" }}>{item.percentage}</p>
     </LevelContainer>
   );

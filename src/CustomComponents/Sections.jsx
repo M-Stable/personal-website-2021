@@ -27,6 +27,7 @@ const SkillsSection = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 `;
 
 const WorkSection = styled.div`
@@ -36,6 +37,7 @@ const WorkSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
 `;
 
 const ProjectSection = styled.div`

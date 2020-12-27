@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ProjectSection } from "../CustomComponents/Sections";
 import styled from "styled-components";
 import Card from "../CustomComponents/Card";
@@ -8,7 +8,6 @@ import websiteImage from "../images/projects/websiteImage.PNG";
 import varpedia from "../images/projects/varpedia.PNG";
 import { useMediaQuery } from "react-responsive";
 import wireframe from "../images/illustrations/wireframe.svg";
-import Aos from "aos";
 import "aos/dist/aos.css";
 
 const StyledImage = styled.img`
@@ -48,10 +47,6 @@ const StyledHeading = styled.h1`
 
 function Projects(props) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
 
   return (
     <ProjectSection>

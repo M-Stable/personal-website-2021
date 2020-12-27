@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import "./App.css";
 import styled from "styled-components";
 import Homepage from "./Sections/Homepage";
@@ -9,6 +9,7 @@ import Projects from "./Sections/Projects";
 import Contact from "./Sections/Contact";
 import Music from "./Sections/Music";
 import { useMediaQuery } from "react-responsive";
+import Aos from "aos";
 
 const MusicContactContainer = styled.div`
   display: flex;
@@ -18,6 +19,10 @@ function App() {
   const ref = useRef(null);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const executeScroll = () => ref.current.scrollIntoView();
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   const ConditionalWrapper = ({ condition, wrapper, children }) =>
     condition ? wrapper(children) : children;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ContactSection } from "../CustomComponents/Sections";
 import styled from "styled-components";
 import contact from "../images/illustrations/contact.svg";
@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import Aos from "aos";
 import "aos/dist/aos.css";
 
 const StyledImage = styled.img`
@@ -183,11 +182,6 @@ function Contact(props) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const [errorText, setErrorText] = useState("");
-
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -212,7 +206,6 @@ function Contact(props) {
           setLoading(false);
           setSuccess(false);
           setError(true);
-          setErrorText(error.text);
           setTimeout(() => {
             setError(false);
           }, 2000);
@@ -303,7 +296,7 @@ function Contact(props) {
 
       {loading && <Sending />}
       {success && <Sent />}
-      {error && <Error message={errorText} />}
+      {error && <Error />}
 
       <StyledImage src={contact} alt="contact" />
     </ContactSection>

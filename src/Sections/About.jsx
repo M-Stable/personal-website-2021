@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AboutSection } from "../CustomComponents/Sections";
 import styled, { keyframes } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,6 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { aboutMe } from "../helpers/messages";
 import education from "../images/illustrations/education.svg";
 import { useMediaQuery } from "react-responsive";
-import Aos from "aos";
 import "aos/dist/aos.css";
 
 const StyledHeading = styled.h1`
@@ -49,12 +48,14 @@ const HeadingContainer = styled.div`
 `;
 
 const AboutContainer = styled.div`
-  width: ${(props) => (props.isMobile ? "100%" : "70%")};
+  width: ${(props) => (props.isMobile ? "90%" : "65%")};
   min-width: 300px;
-  border-left: 0.3rem solid #423e37;
-  // background: linear-gradient(to left, transparent 50%, #423e37 50%) right;
-  background-size: 200%;
-  padding: 0 30px 0 30px;
+  border-left: ${(props) => !props.isMobile && "0.3rem solid #423e37"};
+  padding: ${(props) => !props.isMobile && "0 30px 0 30px"};
+  // border-left: 0.3rem solid #423e37;
+  // padding: 0 30px 0 30px;
+  // margin: 0 50px 0 350px;
+  margin: ${(props) => !props.isMobile && "0 50px 0 350px"};
   transition: all 1s ease;
   animation: 1s ${fadeIn} ease-out;
   color: #fff8f0;
@@ -67,7 +68,7 @@ const AboutContainer = styled.div`
 
 const StyledImage = styled.img`
   position: absolute;
-  right: 100px;
+  left: 100px;
   top: calc(50% - 120px);
   width: 350px;
   z-index: 1;
@@ -112,35 +113,31 @@ const NextButton = styled.button`
 function About(props) {
   const [counter, setCounter] = useState(0);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
-  
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
+
+
 
   return (
     <AboutSection>
       {!isTabletOrMobile && (
-        <StyledImage data-aos="fade-left" src={education} alt="education" />
+        <StyledImage data-aos="fade-right" src={education} alt="education" />
       )}
 
       <AboutContainer isMobile={isTabletOrMobile} data-aos="fade-up">
         <HeadingContainer>
-          <div>
-            <StyledHeading>{aboutMe[counter].title}</StyledHeading>
-            <StyledSubHeading>{aboutMe[counter].subTitle}</StyledSubHeading>
-          </div>
-
+          <StyledHeading>{aboutMe[counter].title}</StyledHeading>
           <NextButton
             onClick={() => {
-              setCounter((prevState) => (prevState + 1) % 3);
+              setCounter((prevState) => (prevState + 1) % aboutMe.length);
             }}
           >
             <p style={{ margin: "0 12px" }}>
-              {aboutMe[(counter + 1) % 3].title}
+              {aboutMe[(counter + 1) % aboutMe.length].title}
             </p>
             <FontAwesomeIcon id="icon" icon={faArrowRight} />
           </NextButton>
         </HeadingContainer>
+
+        <StyledSubHeading>{aboutMe[counter].subTitle}</StyledSubHeading>
 
         <ParagraphContainer>{aboutMe[counter].description}</ParagraphContainer>
         <ListContainer isMobile={isTabletOrMobile}>

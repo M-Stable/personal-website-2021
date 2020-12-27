@@ -33,14 +33,7 @@ const aboutMe = [
       "SOFTENG 254 Quality Assurance (A+)",
     ],
   },
-  {
-    title: "Achievements",
-    list: [
-      "Academic Gold Honours for NCEA level 2 & 3",
-      "ABRSM Grade 7 Piano",
-      "Gold award at national concert band competition (Manukau Concert Band)",
-    ],
-  },
+
 ];
 
 const workExperience = [
@@ -48,9 +41,10 @@ const workExperience = [
     title: "Quantiful",
     subHeading: "Front End Intern (Nov. 2020 - Feb. 2021)",
     description: [
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-      "when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "Worked on building new functionality for the QU application using React/Redux and Styled Components",
+      "Drastically improved User Experience by building a Search Functionality which increased efficiency by 80%",
+      "Built unit tests and managed integration tests for front end components using React Testing Library, Katalon and Jest",
+      "Gained experience in Scrum Agile Methodologies",
     ],
   },
   {

@@ -13,7 +13,8 @@ const SentContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 150px;
+  width: auto;
+  padding: 0 15px;
   height: 50px;
   border-radius: 50px;
   background: #b12222;
@@ -24,7 +25,7 @@ function Error(props) {
   return (
     <Container>
       <SentContainer>
-        <p>{props.message}</p>
+        <p><i>Error sending email</i></p>
       </SentContainer>
     </Container>
   );
