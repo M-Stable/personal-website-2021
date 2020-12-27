@@ -7,8 +7,8 @@ const LevelContainer = styled.div`
   height: 50px;
   align-items: center;
   margin: 20px 0 20px 0;
-  flex-basis: 45%;
-  // min-width: 250px;
+  flex-basis: ${(props) => (props.isMobile ? "100%" : "45%")};
+  min-width: 250px;
 
   &:hover #title {
     width: calc(100% - 20px);
@@ -64,14 +64,12 @@ function SkillBar(props) {
   const { item } = props;
 
   return (
-    <LevelContainer>
+    <LevelContainer isMobile={isTabletOrMobile}>
       <Icon img={item.image} />
       <Title id="title">{item.title}</Title>
-      {!isTabletOrMobile && (
-        <FullBar>
-          <PercentageBar percentage={item.percentage} />
-        </FullBar>
-      )}
+      <FullBar>
+        <PercentageBar percentage={item.percentage} />
+      </FullBar>
       <p style={{ color: "#423E37" }}>{item.percentage}</p>
     </LevelContainer>
   );

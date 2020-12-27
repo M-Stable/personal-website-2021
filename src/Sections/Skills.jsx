@@ -101,8 +101,7 @@ const SkillBarContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: ${(props) =>
-    props.isMobile ? "space-around" : "space-between"};
+  justify-content: space-between;
 `;
 
 function Skills() {
