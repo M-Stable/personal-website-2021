@@ -184,6 +184,7 @@ function Contact(props) {
   const [error, setError] = useState(false);
 
   const sendEmail = (e) => {
+    console.log(e)
     e.preventDefault();
     setLoading(true);
 
@@ -252,7 +253,7 @@ function Contact(props) {
 
         <form
           onSubmit={sendEmail}
-          style={{ minHeight: !isTabletOrMobile && "714px", marginTop: "30px" }}
+          style={{ minHeight: !isTabletOrMobile && "714px", marginTop: !isTabletOrMobile && "30px" }}
         >
           <StyledDiv data-aos="fade-left">
             <StyledInput
