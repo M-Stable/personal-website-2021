@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ContactSection } from "../CustomComponents/Sections";
 import styled from "styled-components";
 import contact from "../images/illustrations/contact.svg";
 import { useMediaQuery } from "react-responsive";
+import emailjs from "emailjs-com";
+import Sent from "../CustomComponents/Sent";
+import Sending from "../CustomComponents/Sending";
+import Error from "../CustomComponents/Error";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const StyledImage = styled.img`
   position: absolute;
@@ -12,11 +22,45 @@ const StyledImage = styled.img`
   opacity: 0.5;
 `;
 
+const HeadingContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ContactButton = styled.button`
+  height: 50px;
+  width: 50px;
+  margin: 0 5px;
+  background: transparent;
+  border: 2px solid #fff8f0;
+  border-radius: 100px;
+  color: #fff8f0;
+  font-size: 25px;
+  outline: none;
+  transition: 0.3s;
+  z-index: 20;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    background: #fff8f0;
+    color: #423E37;
+  }
+`;
+
 const StyledHeading = styled.h1`
   color: #fff8f0;
 `;
 
-const StyledForm = styled.form`
+const StyledDiv = styled.div`
   position: relative;
   padding: 30px 0 0;
   margin-top: 10px;
@@ -116,7 +160,7 @@ const StyledTextArea = styled.textarea`
 
 const SendButton = styled.input`
   height: 40px;
-  width: 100px;
+  padding: 0 30px;
   background: transparent;
   border: 2px solid #fff8f0;
   border-radius: 5px;
@@ -124,65 +168,142 @@ const SendButton = styled.input`
   font-size: 20px;
   margin-top: 20px;
   float: right;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    border-color: #EE7B30;
+    color: #EE7B30;
+  }
 `;
 
 function Contact(props) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorText, setErrorText] = useState("");
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        "service_v0cuwk9",
+        "template_lw3i9cr",
+        e.target,
+        "user_up2NHhQg4SgpZj2Ur4zbT"
+      )
+      .then(
+        (result) => {
+          setLoading(false);
+          setSuccess(true);
+          setTimeout(() => {
+            setSuccess(false);
+          }, 2000);
+        },
+        (error) => {
+          setLoading(false);
+          setSuccess(false);
+          setError(true);
+          setErrorText(error.text);
+          setTimeout(() => {
+            setError(false);
+          }, 2000);
+        }
+      );
+    e.target.reset();
+  };
 
   return (
     <ContactSection isMobile={isTabletOrMobile}>
       <div style={{ zIndex: "2" }}>
-        <StyledHeading>Contact</StyledHeading>
-        <StyledForm>
-          <StyledInput
-            type="input"
-            placeholder="Name"
-            name="name"
-            id="name"
-            required
-          />
-          <StyledLabel htmlFor="name" id="form__label">
-            Full Name *
-          </StyledLabel>
-        </StyledForm>
-        <StyledForm>
-          <StyledInput
-            type="input"
-            placeholder="Email"
-            name="email"
-            id="email"
-            required
-          />
-          <StyledLabel htmlFor="email" id="form__label">
-            Your Email *
-          </StyledLabel>
-        </StyledForm>
-        <StyledForm>
-          <StyledInput
-            type="input"
-            placeholder="Subject"
-            name="subject"
-            id="subject"
-            required
-          />
-          <StyledLabel htmlFor="subject" id="form__label">
-            Subject Line *
-          </StyledLabel>
-        </StyledForm>
-        <StyledForm>
-          <StyledTextArea
-            type="input"
-            placeholder="Name"
-            name="name"
-            id="name"
-            required
-          />
-          <StyledLabel htmlFor="name" id="form__label">
-            Message
-          </StyledLabel>
-        </StyledForm>
-        <SendButton type="submit" value="Submit" />
+        <HeadingContainer>
+          <StyledHeading>Contact</StyledHeading>
+          <IconContainer>
+            <a href={"https://github.com/M-Stable"} target="_blank" rel="noreferrer">
+              <ContactButton>
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </ContactButton>
+            </a>
+            <a href={"https://www.linkedin.com/in/francis-lee-889377191/"} target="_blank" rel="noreferrer">
+              <ContactButton>
+                <FontAwesomeIcon icon={faGithub} />
+              </ContactButton>
+            </a>
+            <a href={"https://www.instagram.com/franc_hoon/"} target="_blank" rel="noreferrer">
+              <ContactButton>
+                <FontAwesomeIcon icon={faInstagram} />
+              </ContactButton>
+            </a>
+          </IconContainer>
+        </HeadingContainer>
+
+        <form
+          onSubmit={sendEmail}
+          style={{ minHeight: !isTabletOrMobile && "744px" }}
+        >
+          <StyledDiv data-aos="fade-left">
+            <StyledInput
+              type="input"
+              placeholder="Name"
+              name="name"
+              id="name"
+              required
+            />
+            <StyledLabel htmlFor="name" id="form__label">
+              Full Name *
+            </StyledLabel>
+          </StyledDiv>
+          <StyledDiv data-aos="fade-left" data-aos-delay="100">
+            <StyledInput
+              type="input"
+              placeholder="Email"
+              name="email"
+              id="email"
+              required
+            />
+            <StyledLabel htmlFor="email" id="form__label">
+              Your Email *
+            </StyledLabel>
+          </StyledDiv>
+          <StyledDiv data-aos="fade-left" data-aos-delay="200">
+            <StyledInput
+              type="input"
+              placeholder="Subject"
+              name="subject"
+              id="subject"
+              required
+            />
+            <StyledLabel htmlFor="subject" id="form__label">
+              Subject Line *
+            </StyledLabel>
+          </StyledDiv>
+          <StyledDiv data-aos="fade-left" data-aos-delay="300">
+            <StyledTextArea
+              type="input"
+              placeholder="Name"
+              name="message"
+              id="name"
+              required
+            />
+            <StyledLabel htmlFor="name" id="form__label">
+              Message *
+            </StyledLabel>
+          </StyledDiv>
+          <SendButton type="submit" value="Send" />
+        </form>
       </div>
+
+      {loading && <Sending />}
+      {success && <Sent />}
+      {error && <Error message={errorText} />}
 
       <StyledImage src={contact} alt="contact" />
     </ContactSection>

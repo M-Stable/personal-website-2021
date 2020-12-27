@@ -4,20 +4,18 @@ const IntroSection = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 `;
 
 const AboutSection = styled.div`
-  min-height: ${(props) =>
-    props.expand ? "calc(100vh - 120px)" : "calc(35vh - 120px)"};
-  padding: 60px 10vw 60px 10vw;
+  min-height: calc(35vh - 60px);
+  padding: 30px 5vw 30px 10vw;
   background-color: #ee7b30;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-  align-items: center;
   transition: all 0.5s ease;
   overflow: hidden;
 `;
@@ -67,6 +65,7 @@ const ContactSection = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 `;
 
 export {

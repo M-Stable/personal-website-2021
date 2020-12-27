@@ -1,57 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AboutSection } from "../CustomComponents/Sections";
 import styled, { keyframes } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExpandAlt } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { aboutMe } from "../helpers/messages";
 import education from "../images/illustrations/education.svg";
 import { useMediaQuery } from "react-responsive";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const StyledHeading = styled.h1`
   margin: 10px 10px 10px 0;
 `;
 
 const StyledSubHeading = styled.h2`
-  margin: 10px 10px 10px 0;
-  font-size: 25px;
+  margin: 0;
+  font-size: 20px;
 `;
 
-const HeadingContainer = styled.div`
-  margin-bottom: 10px;
-`;
-
-const ParagraphContainer = styled.div`
+const ParagraphContainer = styled.p`
   margin-bottom: 5px;
+  white-space: pre-wrap;
 `;
 
 const fadeIn = keyframes`
   0% {
-    opacity: 0;
+    transform: 0;
   }
   100% {
     opacity: 1;
   }
 `;
 
-const Container = styled.div`
+const alternate = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(10px);
+  }
+`;
+
+const HeadingContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
 const AboutContainer = styled.div`
-  width: 100%;
+  width: ${(props) => (props.isMobile ? "100%" : "70%")};
   min-width: 300px;
-  border-radius: 20px 0 0 20px;
   border-left: 0.3rem solid #423e37;
-  background: linear-gradient(to left, transparent 50%, #423e37 50%) right;
+  // background: linear-gradient(to left, transparent 50%, #423e37 50%) right;
   background-size: 200%;
-  padding: 0 10px 5px 30px;
-  margin-bottom: 10px;
-  margin-right: 20px;
+  padding: 0 30px 0 30px;
   transition: all 1s ease;
   animation: 1s ${fadeIn} ease-out;
   color: #fff8f0;
-  flex: 5;
+  z-index: 2;
 
   &:hover {
     background-position: left;
@@ -59,26 +66,42 @@ const AboutContainer = styled.div`
 `;
 
 const StyledImage = styled.img`
-  flex: 1;
-  height: 100%;
-  width: 240px;
-  flex-wrap: wrap;
+  position: absolute;
+  right: 100px;
+  top: calc(50% - 120px);
+  width: 350px;
+  z-index: 1;
 `;
 
-const ExpandButton = styled.button`
-  padding: 0;
+const ListContainer = styled.ul`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: ${(props) =>
+    props.isMobile ? "flex-start" : "space-between"};
+`;
+
+const NextButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
   height: 40px;
-  width: 40px;
+  width: auto;
   background: transparent;
   border: 2px solid #fff8f0;
+  border-radius: 5px;
   color: #fff8f0;
   font-size: 20px;
-  position: absolute;
-  bottom: 20px;
   outline: none;
   opacity: 0.6;
   transition: 0.3s;
-  transform: rotate(-45deg);
+  z-index: 5;
+
+  #icon {
+    animation: ${alternate} 1s infinite alternate;
+    margin-right: 20px;
+  }
 
   &:hover {
     opacity: 1;
@@ -87,76 +110,48 @@ const ExpandButton = styled.button`
 `;
 
 function About(props) {
-  const { executeScroll } = props;
-  const [expanded, setExpanded] = useState(false);
+  const [counter, setCounter] = useState(0);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
-
-  const ConditionalWrapper = ({ condition, wrapper, children }) =>
-    condition ? wrapper(children) : children;
+  
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   return (
-    <AboutSection expand={expanded}>
-      <ConditionalWrapper
-        condition={!isTabletOrMobile && !expanded}
-        wrapper={(children) => <Container>{children}</Container>}
-      >
-        <AboutContainer>
-          <HeadingContainer>
-            <StyledHeading>{aboutMe[0].title}</StyledHeading>
-          </HeadingContainer>
-          <ParagraphContainer>
-            <p>{aboutMe[0].description}</p>
-          </ParagraphContainer>
-        </AboutContainer>
+    <AboutSection>
+      {!isTabletOrMobile && (
+        <StyledImage data-aos="fade-left" src={education} alt="education" />
+      )}
 
-        {!isTabletOrMobile && !expanded && (
-          <StyledImage src={education} alt="education" />
-        )}
+      <AboutContainer isMobile={isTabletOrMobile} data-aos="fade-up">
+        <HeadingContainer>
+          <div>
+            <StyledHeading>{aboutMe[counter].title}</StyledHeading>
+            <StyledSubHeading>{aboutMe[counter].subTitle}</StyledSubHeading>
+          </div>
 
-        {expanded && (
-          <AboutContainer>
-            <HeadingContainer>
-              <StyledHeading>{aboutMe[1].title}</StyledHeading>
-              <StyledSubHeading>{aboutMe[1].place}</StyledSubHeading>
-            </HeadingContainer>
-            <ParagraphContainer>
-              <p>
-                <ul>
-                  {aboutMe[1].notable.map((course) => (
-                    <li>{course}</li>
-                  ))}
-                </ul>
-              </p>
-            </ParagraphContainer>
-          </AboutContainer>
-        )}
+          <NextButton
+            onClick={() => {
+              setCounter((prevState) => (prevState + 1) % 3);
+            }}
+          >
+            <p style={{ margin: "0 12px" }}>
+              {aboutMe[(counter + 1) % 3].title}
+            </p>
+            <FontAwesomeIcon id="icon" icon={faArrowRight} />
+          </NextButton>
+        </HeadingContainer>
 
-        {expanded && (
-          <AboutContainer>
-            <HeadingContainer>
-              <StyledHeading>{aboutMe[2].title}</StyledHeading>
-            </HeadingContainer>
-            <ParagraphContainer>
-              <p>
-                <ul>
-                  {aboutMe[2].achievements.map((achievement) => (
-                    <li>{achievement}</li>
-                  ))}
-                </ul>
-              </p>
-            </ParagraphContainer>
-          </AboutContainer>
-        )}
-      </ConditionalWrapper>
-
-      <ExpandButton
-        onClick={() => {
-          setExpanded(!expanded);
-          executeScroll();
-        }}
-      >
-        <FontAwesomeIcon icon={faExpandAlt} />
-      </ExpandButton>
+        <ParagraphContainer>{aboutMe[counter].description}</ParagraphContainer>
+        <ListContainer isMobile={isTabletOrMobile}>
+          {aboutMe[counter].list &&
+            aboutMe[counter].list.map((course) => (
+              <li style={{ minWidth: "calc(50% - 20px)", marginRight: "20px" }}>
+                <ParagraphContainer>{course}</ParagraphContainer>
+              </li>
+            ))}
+        </ListContainer>
+      </AboutContainer>
     </AboutSection>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { WorkSection } from "../CustomComponents/Sections";
 import styled from "styled-components";
 import { workExperience } from "../helpers/messages";
@@ -7,6 +7,8 @@ import woorkImage from "../images/work/woork.jpg";
 import fcl from "../images/work/fcl.jpeg";
 import { useMediaQuery } from "react-responsive";
 import working from "../images/illustrations/working.svg";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const StyledImage = styled.img`
   width: 70%;
@@ -114,16 +116,21 @@ function Work(props) {
   const [active, setActive] = useState(0);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
+
+
   return (
     <WorkSection>
       <WorkContainer isMobile={isTabletOrMobile}>
         <ImageContainer>
-          {!isTabletOrMobile && <StyledImage src={working} alt="resume" />}
-          <StyledHeading>Work Experience</StyledHeading>
+          {!isTabletOrMobile && <StyledImage data-aos="fade-right" src={working} alt="resume" />}
+          <StyledHeading data-aos="slide-up">Work Experience</StyledHeading>
         </ImageContainer>
 
         <GridContainer isMobile={isTabletOrMobile}>
-          <InformationContainer>
+          <InformationContainer data-aos="flip-up">
             <StyledWorkHeading>
               {workExperience[active].title}
             </StyledWorkHeading>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SkillsSection } from "../CustomComponents/Sections";
 import SkillBar from "../CustomComponents/SkillsComponents/SkillBar";
 import styled from "styled-components";
@@ -6,6 +6,8 @@ import { frontEnd, backEnd, tools } from "../helpers/skillsData";
 import { useMediaQuery } from "react-responsive";
 import resume from "../images/illustrations/resume.svg";
 import BackgroundBlue from "../CustomComponents/BackgroundBlue";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const ResumeImage = styled.img`
   position: absolute;
@@ -108,11 +110,15 @@ function Skills() {
   const [activeTab, setActiveTab] = useState(2);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   return (
     <SkillsSection>
       <SkillsContainer isMobile={isTabletOrMobile}>
-        <HeadingContainer>Skills</HeadingContainer>
-        <TableContainer>
+        <HeadingContainer data-aos="flip-up">Skills</HeadingContainer>
+        <TableContainer data-aos="fade">
           <Tabs>
             <Tab onClick={() => setActiveTab(1)} isActive={activeTab === 1}>
               {isTabletOrMobile ? (

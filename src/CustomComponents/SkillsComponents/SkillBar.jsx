@@ -35,7 +35,6 @@ const FullBar = styled.div`
   height: 10px;
   width: 100%;
   margin-right: 10px;
-  box-shadow: 3px 3px #ebe4d7;
 `;
 
 const PercentageBar = styled.div`
@@ -69,7 +68,7 @@ function SkillBar(props) {
       <FullBar>
         <PercentageBar percentage={item.percentage} />
       </FullBar>
-      <p>{item.percentage}</p>
+      <p style={{ color: "#423E37" }}>{item.percentage}</p>
     </LevelContainer>
   );
 }

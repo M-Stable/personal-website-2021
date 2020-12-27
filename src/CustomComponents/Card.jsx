@@ -11,7 +11,7 @@ const CardContainer = styled.div`
   position: relative;
   background-color: #7798ab;
   transition: all 0.3s ease;
-  transform: rotate(${props => props.rotation}deg);
+  transform: rotate(${(props) => props.rotation}deg);
   box-shadow: 10px 10px #ebe4d7;
 
   &:hover {
@@ -74,13 +74,14 @@ const CardText = styled.p`
 `;
 
 function Card(props) {
-  const { text, image, altText, rotation } = props;
+  const { text, image, altText, rotation, link } = props;
   return (
     <CardContainer rotation={rotation}>
-      <ImageContainer>
-        <Image src={image} alt={altText} />
-      </ImageContainer>
-
+      <a href={link} target="_blank" rel="noreferrer">
+        <ImageContainer>
+          <Image src={image} alt={altText} />
+        </ImageContainer>
+      </a>
       <BottomContainer>
         <CardTitle>{text.title}</CardTitle>
         <CardText>{text.description}</CardText>

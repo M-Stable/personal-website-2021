@@ -1,31 +1,31 @@
 const project1 = {
   title: "Chancery",
   description:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also th",
+    "A flashcard web application designed to help people prepare for their next investment banking interview. Created with React using the Material-UI library and used Redux to store flashcard state.",
 };
 
 const project2 = {
   title: "This Website",
   description:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also th",
+    "Built completely from scratch with React + Styled Components. Used Figma to design a wireframe and Photoshop to create the parallex scrolling effect on the landing page. The website is built with the intention of making it feel alive by using animations and having a responsive design.",
 };
 
 const project3 = {
   title: "Varpedia",
   description:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also th",
+    "Developed a learning tool application targeted towards secondary language learners that creates a video with images, audio and text based on the user search term. Designed the GUI using JavaFX and Java + Bash for the backend using MVC design pattern.",
 };
 
 const aboutMe = [
   {
     title: "About Me",
     description:
-      "Hi! I'm Francis and I am currently a fourth year Software Engineering student studying at the Univiersity of Auckland, New Zealand.\nI am an aspiring Front End Developer with immense passion,determined to build the best UI possible to give the best User Experience.",
+      "Hi! I'm Francis and I am currently a fourth year Software Engineering student studying at the Univiersity of Auckland, New Zealand. \nI am an aspiring Front End Developer with a passion for building awesome wesbites with a beautiful UI and a intuitive UX. \nI am always looking for ways to improve my skills to build even better software in the future.",
   },
   {
     title: "Education",
-    place: "University of Auckland ( Mar. 2018 to Nov. 2021 )",
-    notable: [
+    subTitle: "University of Auckland ( Mar. 2018 to Nov. 2021 )",
+    list: [
       "SOFTENG 351 Fundamentals of Database Systems (First in Course)",
       "SOFTENG 350 Human Computer Interaction (A+)",
       "COMPSCI 316 Cyber Security (A+)",
@@ -35,7 +35,7 @@ const aboutMe = [
   },
   {
     title: "Achievements",
-    achievements: [
+    list: [
       "Academic Gold Honours for NCEA level 2 & 3",
       "ABRSM Grade 7 Piano",
       "Gold award at national concert band competition (Manukau Concert Band)",

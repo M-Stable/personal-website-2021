@@ -29,6 +29,7 @@ const ScrollButton = styled.button`
   font-size: 20px;
   position: absolute;
   bottom: 20px;
+  left: 50%;
   outline: none;
   opacity: 0.6;
   transition: 0.3s;

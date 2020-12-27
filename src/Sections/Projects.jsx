@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ProjectSection } from "../CustomComponents/Sections";
 import styled from "styled-components";
 import Card from "../CustomComponents/Card";
@@ -8,6 +8,8 @@ import websiteImage from "../images/projects/websiteImage.PNG";
 import varpedia from "../images/projects/varpedia.PNG";
 import { useMediaQuery } from "react-responsive";
 import wireframe from "../images/illustrations/wireframe.svg";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const StyledImage = styled.img`
   margin-top: 20px;
@@ -47,6 +49,10 @@ const StyledHeading = styled.h1`
 function Projects(props) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
+
   return (
     <ProjectSection>
       <ProjectContainer isMobile={isTabletOrMobile}>
@@ -56,23 +62,26 @@ function Projects(props) {
             image={chancery}
             altText={"Chancery"}
             rotation={2}
+            link={"https://chancery.wdcc.co.nz/"}
           />
           <Card
             text={project2}
             image={websiteImage}
             altText={"Website"}
             rotation={-5}
+            link={"https://github.com/M-Stable/personal-website-2021"}
           />
           <Card
             text={project3}
             image={varpedia}
             altText={"Varpedia"}
             rotation={3}
+            link={"https://github.com/M-Stable/VARpedia"}
           />
         </CardsContainer>
         <ImageContainer>
-          <StyledHeading isMobile={isTabletOrMobile}>Projects</StyledHeading>
-          {!isTabletOrMobile && <StyledImage src={wireframe} alt="resume" />}
+          <StyledHeading data-aos="fade-down" isMobile={isTabletOrMobile}>Projects</StyledHeading>
+          {!isTabletOrMobile && <StyledImage data-aos="fade-left" src={wireframe} alt="resume" />}
         </ImageContainer>
       </ProjectContainer>
     </ProjectSection>
