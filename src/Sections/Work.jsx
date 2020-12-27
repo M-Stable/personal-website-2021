@@ -44,7 +44,7 @@ const GridContainer = styled.div`
 const InformationContainer = styled.div`
   background-color: #fff8f0;
   border-radius: 20px 0 0 20px;
-  padding: 30px;
+  padding: 27px;
   overflow: hidden;
   overflow-y: scroll;
   text-overflow: ellipsis;
