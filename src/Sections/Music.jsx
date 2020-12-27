@@ -10,11 +10,12 @@ const StyledImage = styled.img`
   right: 40px;
   z-index: 1;
   width: 200px;
-  opacity: 0.8;
+  opacity: 0.6;
 `;
 
 const StyledHeading = styled.h1`
   color: #fff8f0;
+  z-index: 2;
 `;
 
 const SoundCloudContainer = styled.div`
