@@ -28,7 +28,7 @@ const Icon = styled.div`
   background-color: #fff8f0;
   min-height: 50px;
   min-width: 50px;
-  box-shadow: 3px 3px #ebe4d7;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
 `;
 
 const FullBar = styled.div`
@@ -36,6 +36,7 @@ const FullBar = styled.div`
   height: 10px;
   width: 100%;
   margin-right: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
 `;
 
 const PercentageBar = styled.div`
