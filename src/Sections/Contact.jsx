@@ -51,7 +51,7 @@ const ContactButton = styled.button`
     opacity: 1;
     cursor: pointer;
     background: #fff8f0;
-    color: #423E37;
+    color: #423e37;
   }
 `;
 
@@ -172,8 +172,8 @@ const SendButton = styled.input`
   &:hover {
     opacity: 1;
     cursor: pointer;
-    border-color: #EE7B30;
-    color: #EE7B30;
+    border-color: #ee7b30;
+    color: #ee7b30;
   }
 `;
 
@@ -220,17 +220,29 @@ function Contact(props) {
         <HeadingContainer>
           <StyledHeading>Contact</StyledHeading>
           <IconContainer>
-            <a href={"https://github.com/M-Stable"} target="_blank" rel="noreferrer">
+            <a
+              href={"https://www.linkedin.com/in/francis-lee-889377191/"}
+              target="_blank"
+              rel="noreferrer"
+            >
               <ContactButton>
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </ContactButton>
             </a>
-            <a href={"https://www.linkedin.com/in/francis-lee-889377191/"} target="_blank" rel="noreferrer">
+            <a
+              href={"https://github.com/M-Stable"}
+              target="_blank"
+              rel="noreferrer"
+            >
               <ContactButton>
                 <FontAwesomeIcon icon={faGithub} />
               </ContactButton>
             </a>
-            <a href={"https://www.instagram.com/franc_hoon/"} target="_blank" rel="noreferrer">
+            <a
+              href={"https://www.instagram.com/franc_hoon/"}
+              target="_blank"
+              rel="noreferrer"
+            >
               <ContactButton>
                 <FontAwesomeIcon icon={faInstagram} />
               </ContactButton>
