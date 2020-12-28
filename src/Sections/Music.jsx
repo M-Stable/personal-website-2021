@@ -14,7 +14,7 @@ const StyledImage = styled.img`
 `;
 
 const StyledHeading = styled.h1`
-  color: #fff8f0;
+  color: ${props => props.theme.white};
   z-index: 2;
 `;
 

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import "./App.css";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import Homepage from "./Sections/Homepage";
 import About from "./Sections/About";
 import Skills from "./Sections/Skills";
@@ -27,35 +27,45 @@ function App() {
   const ConditionalWrapper = ({ condition, wrapper, children }) =>
     condition ? wrapper(children) : children;
 
+  const theme = {
+    orange: "#EE7B30",
+    white: "#FFF8F0",
+    blue: "#7798AB",
+    brown: "#BB7E5D",
+    black: "#423E37",
+  };
+
   return (
-    <div>
-      <Homepage executeScroll={executeScroll} />
-      <div ref={ref}>
-        <About executeScroll={executeScroll} />
-      </div>
+    <ThemeProvider theme={theme}>
       <div>
-        <Skills />
-      </div>
-      <div>
-        <Work />
-      </div>
-      <div>
-        <Projects />
-      </div>
-      <ConditionalWrapper
-        condition={!isTabletOrMobile}
-        wrapper={(children) => (
-          <MusicContactContainer>{children}</MusicContactContainer>
-        )}
-      >
-        <div>
-          <Music />
+        <Homepage executeScroll={executeScroll} />
+        <div ref={ref}>
+          <About executeScroll={executeScroll} />
         </div>
         <div>
-          <Contact />
+          <Skills />
         </div>
-      </ConditionalWrapper>
-    </div>
+        <div>
+          <Work />
+        </div>
+        <div>
+          <Projects />
+        </div>
+        <ConditionalWrapper
+          condition={!isTabletOrMobile}
+          wrapper={(children) => (
+            <MusicContactContainer>{children}</MusicContactContainer>
+          )}
+        >
+          <div>
+            <Music />
+          </div>
+          <div>
+            <Contact />
+          </div>
+        </ConditionalWrapper>
+      </div>
+    </ThemeProvider>
   );
 }
 

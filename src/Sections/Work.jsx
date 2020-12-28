@@ -21,7 +21,7 @@ const ImageContainer = styled.div`
 `;
 
 const StyledHeading = styled.h1`
-  color: #fff8f0;
+  color: ${props => props.theme.white};
 `;
 
 const WorkContainer = styled.div`
@@ -42,7 +42,7 @@ const GridContainer = styled.div`
 `;
 
 const InformationContainer = styled.div`
-  background-color: #fff8f0;
+  background-color: ${props => props.theme.white};
   border-radius: 20px 0 0 20px;
   padding: 27px;
   overflow: hidden;
@@ -61,7 +61,7 @@ const InformationContainer = styled.div`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #ee7b30;
+    background-color: ${props => props.theme.orange};
   }
 `;
 
@@ -96,18 +96,18 @@ const Icon = styled.div`
 `;
 
 const StyledWorkHeading = styled.h1`
-  color: #ee7b30;
+  color: ${props => props.theme.orange};
   font-size: 40px;
   margin: 0 0 10px 0;
 `;
 
 const StyledWorkSubHeading = styled.h2`
-  color: #423e37;
+  color: ${props => props.theme.black};
   font-size: 20px;
 `;
 
 const StyledWorkText = styled.p`
-  color: #423e37;
+  color: ${props => props.theme.black};
   font-size: 15px;
 `;
 

@@ -18,7 +18,7 @@ const SentContainer = styled.div`
   height: 50px;
   border-radius: 50px;
   background: #b12222;
-  color: #fff8f0;
+  color: ${props => props.theme.white};
 `;
 
 function Error(props) {

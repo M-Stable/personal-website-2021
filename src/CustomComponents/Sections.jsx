@@ -11,7 +11,7 @@ const IntroSection = styled.div`
 const AboutSection = styled.div`
   min-height: calc(35vh - 60px);
   padding: 30px 5vw 30px 10vw;
-  background-color: #ee7b30;
+  background-color: ${props => props.theme.orange};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +23,7 @@ const AboutSection = styled.div`
 const SkillsSection = styled.div`
   min-height: calc(65vh - 60px);
   padding: 40px 10vw 20px 10vw;
-  background-color: #fff8f0;
+  background-color: ${props => props.theme.white};
   display: flex;
   flex-direction: column;
   position: relative;
@@ -33,7 +33,7 @@ const SkillsSection = styled.div`
 const WorkSection = styled.div`
   min-height: calc(50vh - 80px);
   padding: 40px 10vw 40px 10vw;
-  background-color: #7798ab;
+  background-color: ${props => props.theme.blue};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,7 +43,7 @@ const WorkSection = styled.div`
 const ProjectSection = styled.div`
   min-height: calc(50vh - 80px);
   padding: 40px 10vw 40px 10vw;
-  background-color: #fff8f0;
+  background-color: ${props => props.theme.white};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,7 +53,7 @@ const MusicSection = styled.div`
   min-height: calc(100vh - 80px);
   min-width: ${props => props.isMobile ? "calc(100vw - 100px)" : "calc(50vw - 80px)"};
   padding: 40px;
-  background-color: #bb7e5d;
+  background-color: ${props => props.theme.brown};
   display: flex;
   flex-direction: column;
   position: relative;
@@ -63,7 +63,7 @@ const ContactSection = styled.div`
   min-height: calc(100vh - 80px);
   min-width: ${props => props.isMobile ? "calc(100vw - 100px)" : "calc(50vw - 100px)"};
   padding: 40px;
-  background-color: #423e37;
+  background-color: ${props => props.theme.black};
   display: flex;
   flex-direction: column;
   position: relative;

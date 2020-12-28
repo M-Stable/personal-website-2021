@@ -41,7 +41,7 @@ const CardsContainer = styled.div`
 `;
 
 const StyledHeading = styled.h1`
-  color: #7798ab;
+  color: ${props => props.theme.blue};
   order: ${(props) => props.isMobile && "1"};
 `;
 

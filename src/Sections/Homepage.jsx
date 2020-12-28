@@ -23,9 +23,9 @@ const ScrollButton = styled.button`
   height: 50px;
   width: 50px;
   background: transparent;
-  border: 2px solid #fff8f0;
+  border: 2px solid ${props => props.theme.white};
   border-radius: 100px;
-  color: #fff8f0;
+  color: ${props => props.theme.white};
   font-size: 20px;
   position: absolute;
   bottom: 20px;

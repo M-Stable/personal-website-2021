@@ -39,9 +39,9 @@ const ContactButton = styled.button`
   width: 50px;
   margin: 0 5px;
   background: transparent;
-  border: 2px solid #fff8f0;
+  border: 2px solid ${props => props.theme.white};
   border-radius: 100px;
-  color: #fff8f0;
+  color: ${props => props.theme.white};
   font-size: 25px;
   outline: none;
   transition: 0.3s;
@@ -50,13 +50,13 @@ const ContactButton = styled.button`
   &:hover {
     opacity: 1;
     cursor: pointer;
-    background: #fff8f0;
-    color: #423e37;
+    background: ${props => props.theme.white};
+    color: ${props => props.theme.black};
   }
 `;
 
 const StyledHeading = styled.h1`
-  color: #fff8f0;
+  color: ${props => props.theme.white};
 `;
 
 const StyledDiv = styled.div`
@@ -69,10 +69,10 @@ const StyledDiv = styled.div`
 const StyledInput = styled.input`
   width: calc(100% - 20px);
   border: 0;
-  border-bottom: 2px solid #fff8f0;
+  border-bottom: 2px solid ${props => props.theme.white};
   outline: 0;
   font-size: 1.1rem;
-  color: #fff8f0;
+  color: ${props => props.theme.white};
   padding: 8px 10px;
   background: #5c574f;
   transition: border-color 0.2s;
@@ -94,12 +94,12 @@ const StyledInput = styled.input`
       display: block;
       transition: 0.2s;
       font-size: 1rem;
-      color: #ee7b30;
+      color: ${props => props.theme.orange};
       margin-left: 0px;
     }
     padding-bottom: 6px;
     border-width: 3px;
-    border-image: linear-gradient(to right, #ee7b30, #fff8f0);
+    border-image: linear-gradient(to right, ${props => props.theme.orange}, ${props => props.theme.white});
     border-image-slice: 1;
   }
 
@@ -124,10 +124,10 @@ const StyledTextArea = styled.textarea`
   width: calc(100% - 20px);
   height: 200px;
   border: 0;
-  border-bottom: 2px solid #fff8f0;
+  border-bottom: 2px solid ${props => props.theme.white};
   outline: 0;
   font-size: 1.1rem;
-  color: #fff8f0;
+  color: ${props => props.theme.white};
   padding: 8px 10px;
   background: #5c574f;
   transition: border-color 0.2s;
@@ -150,7 +150,7 @@ const StyledTextArea = styled.textarea`
       display: block;
       transition: 0.2s;
       font-size: 1rem;
-      color: #ee7b30;
+      color: ${props => props.theme.orange};
       margin-left: 0px;
     }
     padding-bottom: 6px;
@@ -161,9 +161,9 @@ const SendButton = styled.input`
   height: 40px;
   padding: 0 30px;
   background: transparent;
-  border: 2px solid #fff8f0;
+  border: 2px solid ${props => props.theme.white};
   border-radius: 5px;
-  color: #fff8f0;
+  color: ${props => props.theme.white};
   font-size: 20px;
   margin-top: 20px;
   float: right;
@@ -172,8 +172,8 @@ const SendButton = styled.input`
   &:hover {
     opacity: 1;
     cursor: pointer;
-    border-color: #ee7b30;
-    color: #ee7b30;
+    border-color: ${props => props.theme.orange};
+    color: ${props => props.theme.orange};
   }
 `;
 

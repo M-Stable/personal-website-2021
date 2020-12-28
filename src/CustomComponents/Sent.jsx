@@ -56,7 +56,7 @@ const SentContainer = styled.div`
   width: 150px;
   height: 50px;
   border-radius: 50px;
-  background: #ee7b30;
+  background: ${props => props.theme.orange};
   z-index: 4;
 
   position: absolute;
@@ -71,7 +71,7 @@ const Text = styled.p`
   top: 5px;
   left: 70px;
   z-index: 7;
-  color: #fff8f0;
+  color: ${props => props.theme.white};
 `;
 
 function Sent(props) {

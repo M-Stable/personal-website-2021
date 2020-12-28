@@ -39,7 +39,7 @@ const HeadingContainer = styled.h1`
 
   ::before,
   ::after {
-    background-color: #423e37;
+    background-color: ${props => props.theme.black};
     box-shadow: 3px 3px #ebe4d7;
     content: "";
     display: inline-block;
@@ -76,7 +76,7 @@ const Tab = styled.div`
   font-size: 28px;
   overflow: hidden;
   white-space: nowrap;
-  color: #423e37;
+  color: ${props => props.theme.black};
 
   ::after {
     transition: border-bottom 0.3s;

@@ -9,7 +9,7 @@ const CardContainer = styled.div`
   width: 250px;
   min-width: 250px;
   position: relative;
-  background-color: #7798ab;
+  background-color: ${props => props.theme.blue};
   transition: all 0.3s ease;
   transform: rotate(${(props) => props.rotation}deg);
   box-shadow: 10px 10px #ebe4d7;
@@ -43,7 +43,7 @@ const BottomContainer = styled.div`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #ee7b30;
+    background-color: ${props => props.theme.orange};
   }
 `;
 
@@ -62,13 +62,13 @@ const Image = styled.img`
 `;
 
 const CardTitle = styled.h2`
-  color: #423e37;
+  color: ${props => props.theme.black};
   margin: 5px 0 0 0;
   font-size: 20px;
 `;
 
 const CardText = styled.p`
-  color: #423e37;
+  color: ${props => props.theme.black};
   font-size: 15px;
   margin: 5px 5px 0 5px;
 `;

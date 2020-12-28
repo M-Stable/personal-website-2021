@@ -24,8 +24,8 @@ const Icon = styled.div`
   border-radius: 100px;
   border-style: solid;
   border-width: 1px;
-  border-color: #423e37;
-  background-color: #fff8f0;
+  border-color: ${props => props.theme.black};
+  background-color: ${props => props.theme.white};
   min-height: 50px;
   min-width: 50px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
@@ -41,7 +41,7 @@ const FullBar = styled.div`
 
 const PercentageBar = styled.div`
   border-radius: 0 5px 5px 0;
-  background-color: #ee7b30;
+  background-color: ${props => props.theme.orange};
   height: 100%;
   width: ${(props) => props.percentage};
 `;
@@ -54,8 +54,8 @@ const Title = styled.p`
   transition: 0.5s;
   white-space: nowrap;
   font-style: italic;
-  background-color: #423e37;
-  color: #fff8f0;
+  background-color: ${props => props.theme.black};
+  color: ${props => props.theme.white};
   border-radius: 100px;
   opacity: 0;
 `;

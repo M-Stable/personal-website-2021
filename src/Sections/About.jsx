@@ -55,7 +55,7 @@ const AboutContainer = styled.div`
   margin: ${(props) => !props.isMobile && "0 50px 0 350px"};
   transition: all 1s ease;
   animation: 1s ${fadeIn} ease-out;
-  color: #fff8f0;
+  color: ${props => props.theme.white};
   z-index: 2;
 
   &:hover {
@@ -88,9 +88,9 @@ const NextButton = styled.button`
   height: 40px;
   width: auto;
   background: transparent;
-  border: 2px solid #fff8f0;
+  border: 2px solid ${props => props.theme.white};
   border-radius: 5px;
-  color: #fff8f0;
+  color: ${props => props.theme.white};
   font-size: 20px;
   outline: none;
   opacity: 0.6;

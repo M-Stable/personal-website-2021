@@ -16,8 +16,8 @@ const SentContainer = styled.div`
   width: 150px;
   height: 50px;
   border-radius: 50px;
-  background: #bb7e5d;
-  color: #fff8f0;
+  background: ${props => props.theme.brown};
+  color: ${props => props.theme.white};
 `;
 
 function Sending(props) {
