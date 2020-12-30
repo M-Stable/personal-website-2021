@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./App.css";
 import styled, { ThemeProvider } from "styled-components";
 import Homepage from "./Sections/Homepage";
@@ -16,6 +16,8 @@ const MusicContactContainer = styled.div`
 `;
 
 function App() {
+  const [numImages, setNumImages] = useState(0);
+
   const ref = useRef(null);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const executeScroll = () => ref.current.scrollIntoView();
@@ -37,34 +39,30 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <Homepage executeScroll={executeScroll} />
-        <div ref={ref}>
-          <About executeScroll={executeScroll} />
-        </div>
-        <div>
+      <Homepage
+        executeScroll={executeScroll}
+        numImages={numImages}
+        setNumImages={setNumImages}
+      />
+      {numImages === 5 && (
+        <>
+          <div ref={ref}>
+            <About executeScroll={executeScroll} />
+          </div>
           <Skills />
-        </div>
-        <div>
           <Work />
-        </div>
-        <div>
           <Projects />
-        </div>
-        <ConditionalWrapper
-          condition={!isTabletOrMobile}
-          wrapper={(children) => (
-            <MusicContactContainer>{children}</MusicContactContainer>
-          )}
-        >
-          <div>
+          <ConditionalWrapper
+            condition={!isTabletOrMobile}
+            wrapper={(children) => (
+              <MusicContactContainer>{children}</MusicContactContainer>
+            )}
+          >
             <Music />
-          </div>
-          <div>
             <Contact />
-          </div>
-        </ConditionalWrapper>
-      </div>
+          </ConditionalWrapper>
+        </>
+      )}
     </ThemeProvider>
   );
 }

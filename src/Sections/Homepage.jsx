@@ -10,6 +10,7 @@ import mountain from "../images/landing-page/mountain.png";
 import hill1 from "../images/landing-page/hill1.png";
 import hill2 from "../images/landing-page/hill2.png";
 import rocks from "../images/landing-page/rocks.png";
+import Loading from "../CustomComponents/Loading";
 
 const OrangePage = styled(IntroSection)`
   background-image: url(${backgroundImage});
@@ -23,9 +24,9 @@ const ScrollButton = styled.button`
   height: 50px;
   width: 50px;
   background: transparent;
-  border: 2px solid ${props => props.theme.white};
+  border: 2px solid ${(props) => props.theme.white};
   border-radius: 100px;
-  color: ${props => props.theme.white};
+  color: ${(props) => props.theme.white};
   font-size: 20px;
   position: absolute;
   bottom: 20px;
@@ -85,6 +86,8 @@ function Homepage(props) {
   const { executeScroll } = props;
   const [offsetY, setOffsetY] = useState(0);
 
+  const {numImages, setNumImages} = props;
+  
   const handleScroll = () => setOffsetY(window.pageYOffset);
 
   useEffect(() => {
@@ -95,40 +98,49 @@ function Homepage(props) {
 
   return (
     <OrangePage>
+      {numImages !== 5 && <Loading />}
       <SkyImage
         src={sky}
         alt="sky"
         style={{ transform: `translateY(-${offsetY * 0.2}px)` }}
+        onLoad={() => setNumImages((prevState) => prevState + 1)}
       />
       <MountainImage
         src={mountain}
         alt="mountain"
         style={{ transform: `translateX(${offsetY * 0.7}px)` }}
+        onLoad={() => setNumImages((prevState) => prevState + 1)}
       />
       <Hill1Image
         src={hill1}
         alt="hill1"
         style={{ transform: `translateX(-${offsetY * 0.1}px)` }}
+        onLoad={() => setNumImages((prevState) => prevState + 1)}
       />
       <Hill2Image
         src={hill2}
         alt="hill2"
         style={{ transform: `translateX(${offsetY * 0.2}px)` }}
+        onLoad={() => setNumImages((prevState) => prevState + 1)}
       />
       <RockImage
         src={rocks}
         alt="rocks"
+        onLoad={() => setNumImages((prevState) => prevState + 1)}
       />
-      <div
-        style={{
-          height: "40%",
-          width: "40%",
-          transform: `translateY(${offsetY * 0.3}px)`,
-          zIndex: "20",
-        }}
-      >
-        <Francis />
-      </div>
+
+      {numImages === 5 && (
+        <div
+          style={{
+            height: "40%",
+            width: "40%",
+            transform: `translateY(${offsetY * 0.3}px)`,
+            zIndex: "20",
+          }}
+        >
+          <Francis />
+        </div>
+      )}
       <ScrollButton
         style={{ transform: `translateY(-${offsetY * 0.1}px)` }}
         onClick={executeScroll}
