@@ -64,7 +64,7 @@ function Projects(props) {
             image={websiteImage}
             altText={"Website"}
             rotation={-5}
-            link={"https://github.com/M-Stable/personal-website-2021"}
+            link={"https://www.customspotify.cf/"}
           />
           <Card
             text={project3}

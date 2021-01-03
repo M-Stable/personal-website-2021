@@ -5,9 +5,9 @@ const project1 = {
 };
 
 const project2 = {
-  title: "This Website",
+  title: "Custom Spotify",
   description:
-    "Built completely from scratch with React + Styled Components. Used Figma to design a wireframe and Photoshop to create the parallex scrolling effect on the landing page. The website is built with the intention of making it feel alive by using animations and having a responsive design.",
+    "A stripped down, responsive, modern Spotify tool with playback controls that shows you your top 20 artists and tracks. Built from scratch using React + Styled Components. Leverages Spotify Web API to display data as well as provide the playback functionality.",
 };
 
 const project3 = {
