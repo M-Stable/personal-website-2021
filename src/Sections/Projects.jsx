@@ -3,7 +3,7 @@ import { ProjectSection } from "../CustomComponents/Sections";
 import styled from "styled-components";
 import Card from "../CustomComponents/Card";
 import { project1, project2, project3 } from "../helpers/messages";
-import chancery from "../images/projects/chancery.png";
+import whattoeat from "../images/projects/whattoeat.PNG";
 import websiteImage from "../images/projects/websiteImage.PNG";
 import varpedia from "../images/projects/varpedia.PNG";
 import { useMediaQuery } from "react-responsive";
@@ -54,15 +54,15 @@ function Projects(props) {
         <CardsContainer isMobile={isTabletOrMobile}>
           <Card
             text={project1}
-            image={chancery}
-            altText={"Chancery"}
+            image={whattoeat}
+            altText={"What To Eat"}
             rotation={2}
-            link={"https://chancery.wdcc.co.nz/"}
+            link={"https://myeaterylist.netlify.app/"}
           />
           <Card
             text={project2}
             image={websiteImage}
-            altText={"Website"}
+            altText={"Spotify"}
             rotation={-5}
             link={"https://www.customspotify.cf/"}
           />

@@ -1,7 +1,7 @@
 const project1 = {
-  title: "Chancery",
+  title: "What to Eat",
   description:
-    "A flashcard web application designed to help people prepare for their next investment banking interview. Created with React using the Material-UI library and used Redux to store flashcard state.",
+    "A simple web app that allows users to create their own list of restaurants, give them ratings and sort them into custom categories. Used Vue to build the front end and implemented the back end with Firebase Realtime Database",
 };
 
 const project2 = {

@@ -12,11 +12,12 @@ import git from "../images/skillIcons/git.png";
 import jest from "../images/skillIcons/jest.png";
 import junit from "../images/skillIcons/junit.png";
 import reactTesting from "../images/skillIcons/reacttesting.png";
+import vue from "../images/skillIcons/vue.png"
 
 const frontEnd = [
   {
     title: "React",
-    percentage: "90%",
+    percentage: "80%",
     image: react,
   },
   {
@@ -29,12 +30,17 @@ const frontEnd = [
     percentage: "70%",
     image: css,
   },
+  {
+    title: "Vue",
+    percentage: "40%",
+    image: vue,
+  },
 ];
 
 const backEnd = [
   {
     title: "Java",
-    percentage: "90%",
+    percentage: "80%",
     image: java,
   },
   {
